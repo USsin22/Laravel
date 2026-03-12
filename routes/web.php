@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MathController;
 use App\Http\Controllers\SumController;
 use Illuminate\Support\Facades\Route;
 
@@ -101,14 +103,16 @@ Route::fallback(function(){
 
 
 // route resource
-Route::apiResource("car", CarController::class);
+// Route::apiResource("car", CarController::class);
 
-Route::resource('/sum',SumController::class)->only('show');
-Route::resource('/subtract',SumController::class);
-
-
+// Route::get('/sum/{a}/{b}', [MathController::class,'Sum'])->whereNumber(["a","b" ]);
+// Route::get('/subtract/{a}/{b}', [MathController::class,'Subtract'])->whereNumber(["a","b" ]);
 
 
+
+
+
+Route::get("/home", [HomeController::class,'index']);
 
 
 
