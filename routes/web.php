@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\SumController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -81,9 +84,33 @@ Route::fallback(function(){
 
 // controuller
 
-Route::get('/car', [CarController::class,'index']);
+// Route::get('/car', [CarController::class,'index']);
 
-Route::controller(CarController::class)->group(function(){
-    Route::get('/car', 'index');
-    Route::get('car-show','show');
-});
+// Route::controller(CarController::class)->group(function(){
+//     Route::get('/car', 'index');
+//     Route::get('car-show','show');
+// });
+
+
+// // route resource
+// Route::resource('/product', ProductController::class);
+// // route only destroy
+// Route::resource('/product', ProductController::class)->only(['destroy']);
+// // route except destroy
+// Route::resource('/product', ProductController::class)->except(['destroy']);
+
+
+// route resource
+Route::apiResource("car", CarController::class);
+
+Route::resource('/sum',SumController::class)->only('show');
+Route::resource('/subtract',SumController::class);
+
+
+
+
+
+
+
+
+
