@@ -3,23 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
-class ProductController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return("hello ");
+        $students = Student::all();
+        return view('index', [
+            'students' => $students,
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -27,7 +32,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $Data = ();
+        
+            Student::create(
+           $request->all()
+        );
+        return redirect()->route('index')->with('success', 'Student created successfully');
     }
 
     /**
@@ -43,7 +53,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+     $student = Student::findOrFail($id);
+     return view('edit',[
+        'student'=>$student
+     ]);
     }
 
     /**
@@ -51,7 +64,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->update($request->all());
+
+        return redirect()->route('index')->with('success', 'Student updated successfully');
     }
 
     /**
@@ -59,6 +75,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        return redirect()->route('index')->with('success', 'Student deleted successfully');
     }
 }
