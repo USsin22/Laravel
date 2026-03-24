@@ -54,9 +54,7 @@ class StudentController extends Controller
     public function edit(string $id)
     {
      $student = Student::findOrFail($id);
-     return view('edit',[
-        'student'=>$student
-     ]);
+     return view('edit', ['student'=>$student]);
     }
 
     /**

@@ -20,8 +20,22 @@ use Illuminate\Http\request;
     // });
     
     
-Route::resource("/", StudentController::class);
+// Route::get('/', [StudentController::class, 'index'])->name('index');
+// Route::get('/create', [StudentController::class, 'create'])->name('create');
+// Route::post('/store', [StudentController::class, 'store'])->name('store');
+// Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('edit');
+// Route::put('/update/{id}', [StudentController::class, 'update'])->name('update');
+// Route::delete('/delete/{id}', [StudentController::class, 'destroy'])->name('destroy');
 
+
+Route::resource('/', CarController::class);
+    
+// Route::get('/car', [CarController::class, 'index'])->name('index');
+// Route::get('car/create', [CarController::class, 'create'])->name('create');
+// Route::post('/store', [CarController::class, 'store'])->name('store');
+// Route::get('/edit/{id}', [CarController::class, 'edit'])->name('edit');
+// Route::put('/update/{id}', [CarController::class, 'update'])->name('update');
+// Route::delete('/delete/{id}', [CarController::class, 'destroy'])->name('destroy');
 
 
 
